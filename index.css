@@ -1,0 +1,56 @@
+.hero{
+    display: flex;
+    justify-content: center;
+}
+#table-ele{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    padding-left: 0px 25px;
+    width: 1000px;
+    height: 500px;
+    border: 30px solid rgb(169, 106, 39);
+    border-radius: 25px;
+    background-color: green;
+}
+#bottom-row {
+    display: flex;
+    margin: 20px auto;
+    justify-content:center;
+    align-items:end;
+}
+.row{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    border: 1px solid black;
+}
+.player{
+    margin: 4px;
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+    padding: 10px;
+}
+.player-cards{
+    border: 1px solid red;
+    padding: 2px;
+    width: 50px;
+    height: 80px;
+    border-radius: 4px;
+    margin: 10px 5px;
+    text-align: center;
+    background-color: azure;
+}
+.dealer-card{
+    border: 1px solid black;
+    border: 1px solid red;
+    padding: 2px;
+    width: 50px;
+    height: 80px;
+    border-radius: 4px;
+    margin: 10px 5px;
+    text-align: center;
+    background-color: azure;
+}

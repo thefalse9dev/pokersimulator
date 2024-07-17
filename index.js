@@ -1,4 +1,8 @@
 let nPlayers=0
+let isFlop = 0
+let isTurn = 0
+let isRiver = 0
+let isPlayers = 0
 function wait(ms){
     var start = new Date().getTime();
     var end = start;
@@ -9,8 +13,10 @@ function wait(ms){
 
 function startGame(){
     document.getElementById("btn1").addEventListener("click",renderPlayers)
-    document.getElementById("restart").innerHTML = renderRestartButton()
+    document.getElementById("restart").innerHTML = renderButton("RESTART")
+    
     document.getElementById("restart").addEventListener("click",restoreGame)
+    
 }
 
 
@@ -24,10 +30,21 @@ function renderPlayers(){
         for (let i=5;i<=nPlayers;i++)
             row2.innerHTML += renderPlayer(i)
     }
+    isPlayers=1
     document.getElementById("btn1").removeEventListener("click",renderPlayers)
-    renderFlop()
-    renderTurn()
-    renderRiver()
+    
+    document.getElementById("showFlop").innerHTML = renderButton("FLOP")
+    document.getElementById("showFlop").addEventListener("click",renderFlop)
+
+    document.getElementById("showTurn").innerHTML = renderButton("TURN")
+    document.getElementById("showTurn").addEventListener("click",renderTurn)
+
+    document.getElementById("showRiver").innerHTML = renderButton("RIVER")
+    document.getElementById("showRiver").addEventListener("click",renderRiver)
+        
+    
+    
+    
 }
 function renderPlayer(n){
     return `<div class="player" id="player${n}">
@@ -39,14 +56,17 @@ function renderPlayer(n){
     </div>
     <div class="player-data">
         <p>player ${n}</p>
+        <button>FLIP</button>
     </div>
 </div>`
 }
-function renderRestartButton(){
-    return "RESTART"
+function renderButton(text){
+    return text
 }
 function renderFlop(){
-    deal.innerHTML += `<div class="dealer-card" id="dc1">
+    if (isFlop===0 && isPlayers==1){
+        isFlop=1
+        deal.innerHTML += `<div class="dealer-card" id="dc1">
     <h1>?</h1>
 </div>
 <div class="dealer-card" id="dc2">
@@ -54,23 +74,33 @@ function renderFlop(){
 </div>
 <div class="dealer-card" id="dc3">
     <h1>?</h1>
-</div>`
+</div>`}
+    
 }
 function renderTurn(){
+    if (isTurn===0 && isPlayers==1){
+        isTurn=1
     deal.innerHTML += `<div class="dealer-card" id="dc4">
     <h1>?</h1>
-</div>`
+</div>`}
 }
 function renderRiver(){
+    
+    if (isRiver===0 && isPlayers==1){
+        isRiver=1
     deal.innerHTML += `<div class="dealer-card" id="dc5">
     <h1>?</h1>
-</div>`
+</div>`}
 
 }
 function restoreGame(){
     row1.innerHTML = ""
     row2.innerHTML = ""
     deal.innerHTML = ""
+    isFlop=0
+    isTurn=0
+    isRiver=0
+    isPlayers=0
     document.getElementById("btn1").addEventListener("click",renderPlayers)
 }
 

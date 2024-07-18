@@ -40,26 +40,35 @@ function renderPlayers(){
     document.getElementById("showTurn").addEventListener("click",renderTurn)
 
     document.getElementById("showRiver").innerHTML = renderButton("RIVER")
-    document.getElementById("showRiver").addEventListener("click",renderRiver)
-        
-    
-    
-    
+    document.getElementById("showRiver").addEventListener("click",renderRiver) 
 }
+
 function renderPlayer(n){
     return `<div class="player" id="player${n}">
-    <div class="player-cards" id="p${n}-c${n}">
+    <div class="player-cards" id="p${n}-c1">
         <h1>?</h1>
     </div>
-    <div class="player-cards" id="p${n}-c${n}">
+    <div class="player-cards" id="p${n}-c2">
         <h1>?</h1>
     </div>
     <div class="player-data">
         <p>player ${n}</p>
-        <button>FLIP</button>
+        <button id="p${n}" onclick="pl(${n})">FLIP</button>
     </div>
 </div>`
 }
+
+function pl(n){
+    if(document.getElementById(`p${n}-c1`).innerHTML===`<h1>${1}</h1>`){
+        document.getElementById(`p${n}-c1`).innerHTML =`<h1>?</h1>`
+        document.getElementById(`p${n}-c2`).innerHTML =`<h1>?</h1>`
+    }
+    else
+    {    document.getElementById(`p${n}-c1`).innerHTML =`<h1>${1}</h1>`
+        document.getElementById(`p${n}-c2`).innerHTML =`<h1>${2}</h1>`}
+    
+}
+
 function renderButton(text){
     return text
 }

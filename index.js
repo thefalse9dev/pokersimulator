@@ -78,7 +78,7 @@ function renderFlop(){
     
 }
 function renderTurn(){
-    if (isTurn===0 && isPlayers==1){
+    if (isTurn===0 && isPlayers==1 && isFlop==1){
         isTurn=1
     deal.innerHTML += `<div class="dealer-card" id="dc4">
     <h1>?</h1>
@@ -86,7 +86,7 @@ function renderTurn(){
 }
 function renderRiver(){
     
-    if (isRiver===0 && isPlayers==1){
+    if (isRiver===0 && isPlayers==1 && isTurn==1){
         isRiver=1
     deal.innerHTML += `<div class="dealer-card" id="dc5">
     <h1>?</h1>

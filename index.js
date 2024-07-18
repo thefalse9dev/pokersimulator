@@ -30,17 +30,22 @@ function wait(ms){
    }
  }
 
-playerCards = []
+playerCards = [[]]
 function populatePlayerCards(n){
-    for (let i=0;i<=n;i++){
+    for (let i=1;i<=n;i++){
         playerCards.push([drawCard(),drawCard()])
     }
 }
 
 function startGame(){
     document.getElementById("btn1").addEventListener("click",renderPlayers)
-    document.getElementById("bb-id").innerHTML+=`<button id="restart" onclick = "restoreGame()"class="read-number-inp"></button>`
+    document.getElementById("bb-id").innerHTML=`<button id="restart" onclick = "restoreGame()"class="read-number-inp"></button>`
     document.getElementById("restart").innerHTML = renderButton("RESTART")
+    deck = []
+    for(let i=0;i<nums.length;i++){
+        for(let j=0;j<suits.length;j++)
+            deck.push(suits[j]+nums[i])
+    }
     //document.getElementById("restart").addEventListener("click",restoreGame)
     
 }
@@ -60,18 +65,18 @@ function renderPlayers(){
     }
     isPlayers=1
     document.getElementById("btn1").removeEventListener("click",renderPlayers)
-    document.getElementById("bb-id").innerHTML += `
-    <button id="showFlop" class="read-number-inp"></button>
-    <button id="showTurn" class="read-number-inp"></button>
-    <button id="showRiver" class="read-number-inp"></button>`
-    document.getElementById("showFlop").innerHTML = renderButton("FLOP")
+    document.getElementById("bb-id").innerHTML = `<button id="restart" onclick = "restoreGame()" class="read-number-inp">RESTART</button>
+    <button id="showFlop" onclick = "renderFlop()" class="read-number-inp">FLOP</button>
+    <button id="showTurn" onclick = "renderTurn()" class="read-number-inp">TURN</button>
+    <button id="showRiver" onclick = "renderRiver()" class="read-number-inp">RIVER</button>`
+    /*document.getElementById("showFlop").innerHTML = renderButton("FLOP")
     document.getElementById("showFlop").addEventListener("click",renderFlop)
 
     document.getElementById("showTurn").innerHTML = renderButton("TURN")
     document.getElementById("showTurn").addEventListener("click",renderTurn)
 
     document.getElementById("showRiver").innerHTML = renderButton("RIVER")
-    document.getElementById("showRiver").addEventListener("click",renderRiver) 
+    document.getElementById("showRiver").addEventListener("click",renderRiver) */
 }
 
 function renderPlayer(n){
@@ -83,7 +88,7 @@ function renderPlayer(n){
         <h1>?</h1>
     </div>
     <div class="player-data">
-        
+        player ${n}
     </div>
 </div>`
 }
@@ -107,6 +112,7 @@ function renderButton(text){
     return text
 }
 function renderFlop(){
+    console.log(deck)
     let fc1 = drawCard()
     let fc2 = drawCard()
     let fc3 = drawCard()
@@ -160,13 +166,13 @@ function restoreGame(){
     isTurn=0
     isRiver=0
     isPlayers=0
-    playerCards=[]
-    let deck = []
+    playerCards=[[]]
+    deck=[]
     for(let i=0;i<nums.length;i++){
         for(let j=0;j<suits.length;j++)
             deck.push(suits[j]+nums[i])
     }
-    document.getElementById("bb-id").innerHTML=""
+    console.log(deck)
     document.getElementById("btn1").addEventListener("click",renderPlayers)
 }
 

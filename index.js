@@ -11,8 +11,16 @@ function wait(ms){
    }
  }
 
+playerCards = []
+function populatePlayerCards(n){
+    for (let i=0;i<=n;i++){
+        playerCards.push([Math.floor(Math.random()*13)+1,Math.floor(Math.random()*13)+1])
+    }
+}
+
 function startGame(){
     document.getElementById("btn1").addEventListener("click",renderPlayers)
+    
     document.getElementById("restart").innerHTML = renderButton("RESTART")
     
     document.getElementById("restart").addEventListener("click",restoreGame)
@@ -23,6 +31,8 @@ function startGame(){
 function renderPlayers(){
     nPlayers = document.getElementById("number-inp").value
     console.log(`we need to render ${nPlayers} players`)
+    populatePlayerCards(nPlayers)
+    console.log(playerCards[0])
     for (let i=1;i<=Math.min(4,nPlayers);i++){
         row1.innerHTML += renderPlayer(i)
     }
@@ -59,13 +69,13 @@ function renderPlayer(n){
 }
 
 function pl(n){
-    if(document.getElementById(`p${n}-c1`).innerHTML===`<h1>${1}</h1>`){
+    if(document.getElementById(`p${n}-c1`).innerHTML===`<h1>${playerCards[n][0]}</h1>`){
         document.getElementById(`p${n}-c1`).innerHTML =`<h1>?</h1>`
         document.getElementById(`p${n}-c2`).innerHTML =`<h1>?</h1>`
     }
     else
-    {    document.getElementById(`p${n}-c1`).innerHTML =`<h1>${1}</h1>`
-        document.getElementById(`p${n}-c2`).innerHTML =`<h1>${2}</h1>`}
+    {    document.getElementById(`p${n}-c1`).innerHTML =`<h1>${playerCards[n][0]}</h1>`
+        document.getElementById(`p${n}-c2`).innerHTML =`<h1>${playerCards[n][1]}</h1>`}
     
 }
 
@@ -110,6 +120,7 @@ function restoreGame(){
     isTurn=0
     isRiver=0
     isPlayers=0
+    playerCards=[]
     document.getElementById("btn1").addEventListener("click",renderPlayers)
 }
 

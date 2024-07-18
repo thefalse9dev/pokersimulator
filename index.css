@@ -10,7 +10,7 @@ body{
     align-items: center;
 }
 .input{
-    margin-top: 50px;
+    margin-top: 20px;
     font-size: 48px;
 }
 #number-inp{
@@ -22,7 +22,7 @@ body{
     color: white;
 }
 #table-ele{
-    margin-top: 50px ;
+    margin-top: 20px ;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -36,7 +36,7 @@ body{
 }
 #bottom-row {
     display: flex;
-    margin: 20px auto;
+    margin: 10px auto;
     justify-content:center;
     align-items:end;
 }
@@ -64,7 +64,7 @@ body{
     width: 60px;
     height: 90px;
     border-radius: 4px;
-    margin: 10px 5px;
+    margin: 5px 5px;
     text-align: center;
     background-color: azure;
 }

@@ -86,13 +86,13 @@ function renderFlop(){
     if (isFlop===0 && isPlayers==1){
         isFlop=1
         deal.innerHTML += `<div class="dealer-card" id="dc1">
-    <h1>?</h1>
+    <h1>${Math.floor(Math.random()*13)+1}</h1>
 </div>
 <div class="dealer-card" id="dc2">
-    <h1>?</h1>
+    <h1>${Math.floor(Math.random()*13)+1}</h1>
 </div>
 <div class="dealer-card" id="dc3">
-    <h1>?</h1>
+    <h1>${Math.floor(Math.random()*13)+1}</h1>
 </div>`}
     
 }
@@ -100,7 +100,7 @@ function renderTurn(){
     if (isTurn===0 && isPlayers==1 && isFlop==1){
         isTurn=1
     deal.innerHTML += `<div class="dealer-card" id="dc4">
-    <h1>?</h1>
+    <h1>${Math.floor(Math.random()*13)+1}</h1>
 </div>`}
 }
 function renderRiver(){
@@ -108,7 +108,7 @@ function renderRiver(){
     if (isRiver===0 && isPlayers==1 && isTurn==1){
         isRiver=1
     deal.innerHTML += `<div class="dealer-card" id="dc5">
-    <h1>?</h1>
+    <h1>${Math.floor(Math.random()*13)+1}</h1>
 </div>`}
 
 }
